@@ -22,4 +22,8 @@
       </body>
     </body>
   </worldbody>
+  <actuator>
+    <motor name="motor_font_gear" joint="font_gear" gear="100"/>
+    <motor name="motor_font" joint="6" gear="100"/>
+  </actuator>
 </mujoco>
