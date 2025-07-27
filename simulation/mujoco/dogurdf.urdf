@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="dogurdf">
+  <link
+    name="base">
+    <inertial>
+      <origin
+        xyz="-0.138815183608726 0.0176782409612166 -0.0418789431938765"
+        rpy="0 0 0" />
+      <mass
+        value="0.193691940749172" />
+      <inertia
+        ixx="0.000212643438505454"
+        ixy="-3.03908467551612E-08"
+        ixz="-2.55776449815898E-08"
+        iyy="0.000111614073785143"
+        iyz="1.01527564013445E-06"
+        izz="0.00011492245762819" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dogurdf/meshes/base.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dogurdf/meshes/base.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="hip">
+    <inertial>
+      <origin
+        xyz="-0.112158833215 -0.010467888429627 -0.000152165519640937"
+        rpy="0 0 0" />
+      <mass
+        value="0.97840250966566" />
+      <inertia
+        ixx="0.000911112321686209"
+        ixy="-5.94741312881005E-08"
+        ixz="-1.41077325491655E-07"
+        iyy="0.00263457972761172"
+        iyz="3.88323003278594E-07"
+        izz="0.00207388396760232" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dogurdf/meshes/hip.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dogurdf/meshes/hip.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="6"
+    type="continuous">
+    <origin
+      xyz="0.112639943268468 0.0419622516121773 0.0175940069675735"
+      rpy="1.36930230157582 0 0" />
+    <parent
+      link="base" />
+    <child
+      link="hip" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="front_gear">
+    <inertial>
+      <origin
+        xyz="0.00551780970309697 4.16333634234434E-17 1.49186218934005E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.0385237466196057" />
+      <inertia
+        ixx="1.02723402754827E-05"
+        ixy="-2.85873619698326E-21"
+        ixz="-5.29395592033938E-22"
+        iyy="9.4738981050848E-06"
+        iyz="-2.96461531539005E-21"
+        izz="9.4738981050848E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dogurdf/meshes/front_gear.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.776470588235294 0.756862745098039 0.737254901960784 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dogurdf/meshes/front_gear.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="font_gear"
+    type="continuous">
+    <origin
+      xyz="-0.166 0.012614 0"
+      rpy="1.0053 0 -1.5708" />
+    <parent
+      link="hip" />
+    <child
+      link="front_gear" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="back_gear">
+    <inertial>
+      <origin
+        xyz="-3.70883879163841E-15 6.93889390390723E-18 0.0213772870634904"
+        rpy="0 0 0" />
+      <mass
+        value="0.046468593190171" />
+      <inertia
+        ixx="1.044546863586E-05"
+        ixy="4.2351647362715E-22"
+        ixz="1.05879118406788E-22"
+        iyy="1.044546863586E-05"
+        iyz="-5.0821976835258E-21"
+        izz="1.19792859161395E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dogurdf/meshes/back_gear.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dogurdf/meshes/back_gear.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="back_gear"
+    type="fixed">
+    <origin
+      xyz="-0.066 -0.00585 0"
+      rpy="-1.5708 -0.99023 0" />
+    <parent
+      link="hip" />
+    <child
+      link="back_gear" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>

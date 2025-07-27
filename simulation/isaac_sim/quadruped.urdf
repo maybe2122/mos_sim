@@ -1,0 +1,362 @@
+<?xml version="1.0"?>
+<robot name="quadruped">
+  <material name="blue">
+    <color rgba="0.8 0.6 0.4 1"/>
+  </material>
+
+  <link name="base_link"/>
+
+  <link name="torso">
+    <visual>
+      <geometry>
+        <box size="0.2 0.1 0.04"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.2 0.1 0.04"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <joint name="floating_joint" type="floating">
+    <parent link="base_link"/>
+    <child link="torso"/>
+  </joint>
+
+  <!-- Front-Right Leg -->
+  <link name="FR_hip_link">
+    <visual>
+      <geometry>
+        <capsule length="0.05" radius="0.02"/>
+      </geometry>
+      <origin rpy="0 1.5707 0" xyz="0 -0.025 0"/>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <geometry>
+        <capsule length="0.05" radius="0.02"/>
+      </geometry>
+      <origin rpy="0 1.5707 0" xyz="0 -0.025 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+  </link>
+  <joint name="FR_hip_joint" type="revolute">
+    <parent link="torso"/>
+    <child link="FR_hip_link"/>
+    <origin xyz="0.1 -0.05 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="100" lower="-0.52" upper="0.52" velocity="10"/>
+  </joint>
+
+  <link name="FR_thigh_link">
+    <visual>
+      <geometry>
+        <capsule length="0.1" radius="0.02"/>
+      </geometry>
+      <origin rpy="1.5707 0 0" xyz="0 0 -0.05"/>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <geometry>
+        <capsule length="0.1" radius="0.02"/>
+      </geometry>
+      <origin rpy="1.5707 0 0" xyz="0 0 -0.05"/>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+  </link>
+  <joint name="FR_thigh_joint" type="revolute">
+    <parent link="FR_hip_link"/>
+    <child link="FR_thigh_link"/>
+    <origin xyz="0 -0.05 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="100" lower="-1.04" upper="1.04" velocity="10"/>
+  </joint>
+
+  <link name="FR_calf_link">
+    <visual>
+      <geometry>
+        <capsule length="0.1" radius="0.02"/>
+      </geometry>
+      <origin rpy="1.5707 0 0" xyz="0 0 -0.05"/>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <geometry>
+        <capsule length="0.1" radius="0.02"/>
+      </geometry>
+      <origin rpy="1.5707 0 0" xyz="0 0 -0.05"/>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+  </link>
+  <joint name="FR_calf_joint" type="revolute">
+    <parent link="FR_thigh_link"/>
+    <child link="FR_calf_link"/>
+    <origin xyz="0 0 -0.1"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="100" lower="-2.61" upper="-0.52" velocity="10"/>
+  </joint>
+
+  <!-- Front-Left Leg -->
+  <link name="FL_hip_link">
+    <visual>
+      <geometry>
+        <capsule length="0.05" radius="0.02"/>
+      </geometry>
+      <origin rpy="0 1.5707 0" xyz="0 0.025 0"/>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <geometry>
+        <capsule length="0.05" radius="0.02"/>
+      </geometry>
+      <origin rpy="0 1.5707 0" xyz="0 0.025 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+  </link>
+  <joint name="FL_hip_joint" type="revolute">
+    <parent link="torso"/>
+    <child link="FL_hip_link"/>
+    <origin xyz="0.1 0.05 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="100" lower="-0.52" upper="0.52" velocity="10"/>
+  </joint>
+
+  <link name="FL_thigh_link">
+    <visual>
+      <geometry>
+        <capsule length="0.1" radius="0.02"/>
+      </geometry>
+      <origin rpy="1.5707 0 0" xyz="0 0 -0.05"/>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <geometry>
+        <capsule length="0.1" radius="0.02"/>
+      </geometry>
+      <origin rpy="1.5707 0 0" xyz="0 0 -0.05"/>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+  </link>
+  <joint name="FL_thigh_joint" type="revolute">
+    <parent link="FL_hip_link"/>
+    <child link="FL_thigh_link"/>
+    <origin xyz="0 0.05 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="100" lower="-1.04" upper="1.04" velocity="10"/>
+  </joint>
+
+  <link name="FL_calf_link">
+    <visual>
+      <geometry>
+        <capsule length="0.1" radius="0.02"/>
+      </geometry>
+      <origin rpy="1.5707 0 0" xyz="0 0 -0.05"/>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <geometry>
+        <capsule length="0.1" radius="0.02"/>
+      </geometry>
+      <origin rpy="1.5707 0 0" xyz="0 0 -0.05"/>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+  </link>
+  <joint name="FL_calf_joint" type="revolute">
+    <parent link="FL_thigh_link"/>
+    <child link="FL_calf_link"/>
+    <origin xyz="0 0 -0.1"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="100" lower="-2.61" upper="-0.52" velocity="10"/>
+  </joint>
+
+  <!-- Back-Right Leg -->
+  <link name="BR_hip_link">
+    <visual>
+      <geometry>
+        <capsule length="0.05" radius="0.02"/>
+      </geometry>
+      <origin rpy="0 1.5707 0" xyz="0 -0.025 0"/>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <geometry>
+        <capsule length="0.05" radius="0.02"/>
+      </geometry>
+      <origin rpy="0 1.5707 0" xyz="0 -0.025 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+  </link>
+  <joint name="BR_hip_joint" type="revolute">
+    <parent link="torso"/>
+    <child link="BR_hip_link"/>
+    <origin xyz="-0.1 -0.05 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="100" lower="-0.52" upper="0.52" velocity="10"/>
+  </joint>
+
+  <link name="BR_thigh_link">
+    <visual>
+      <geometry>
+        <capsule length="0.1" radius="0.02"/>
+      </geometry>
+      <origin rpy="1.5707 0 0" xyz="0 0 -0.05"/>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <geometry>
+        <capsule length="0.1" radius="0.02"/>
+      </geometry>
+      <origin rpy="1.5707 0 0" xyz="0 0 -0.05"/>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+  </link>
+  <joint name="BR_thigh_joint" type="revolute">
+    <parent link="BR_hip_link"/>
+    <child link="BR_thigh_link"/>
+    <origin xyz="0 -0.05 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="100" lower="-1.04" upper="1.04" velocity="10"/>
+  </joint>
+
+  <link name="BR_calf_link">
+    <visual>
+      <geometry>
+        <capsule length="0.1" radius="0.02"/>
+      </geometry>
+      <origin rpy="1.5707 0 0" xyz="0 0 -0.05"/>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <geometry>
+        <capsule length="0.1" radius="0.02"/>
+      </geometry>
+      <origin rpy="1.5707 0 0" xyz="0 0 -0.05"/>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+  </link>
+  <joint name="BR_calf_joint" type="revolute">
+    <parent link="BR_thigh_link"/>
+    <child link="BR_calf_link"/>
+    <origin xyz="0 0 -0.1"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="100" lower="-2.61" upper="-0.52" velocity="10"/>
+  </joint>
+
+  <!-- Back-Left Leg -->
+  <link name="BL_hip_link">
+    <visual>
+      <geometry>
+        <capsule length="0.05" radius="0.02"/>
+      </geometry>
+      <origin rpy="0 1.5707 0" xyz="0 0.025 0"/>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <geometry>
+        <capsule length="0.05" radius="0.02"/>
+      </geometry>
+      <origin rpy="0 1.5707 0" xyz="0 0.025 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+  </link>
+  <joint name="BL_hip_joint" type="revolute">
+    <parent link="torso"/>
+    <child link="BL_hip_link"/>
+    <origin xyz="-0.1 0.05 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="100" lower="-0.52" upper="0.52" velocity="10"/>
+  </joint>
+
+  <link name="BL_thigh_link">
+    <visual>
+      <geometry>
+        <capsule length="0.1" radius="0.02"/>
+      </geometry>
+      <origin rpy="1.5707 0 0" xyz="0 0 -0.05"/>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <geometry>
+        <capsule length="0.1" radius="0.02"/>
+      </geometry>
+      <origin rpy="1.5707 0 0" xyz="0 0 -0.05"/>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+  </link>
+  <joint name="BL_thigh_joint" type="revolute">
+    <parent link="BL_hip_link"/>
+    <child link="BL_thigh_link"/>
+    <origin xyz="0 0.05 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="100" lower="-1.04" upper="1.04" velocity="10"/>
+  </joint>
+
+  <link name="BL_calf_link">
+    <visual>
+      <geometry>
+        <capsule length="0.1" radius="0.02"/>
+      </geometry>
+      <origin rpy="1.5707 0 0" xyz="0 0 -0.05"/>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <geometry>
+        <capsule length="0.1" radius="0.02"/>
+      </geometry>
+      <origin rpy="1.5707 0 0" xyz="0 0 -0.05"/>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+  </link>
+  <joint name="BL_calf_joint" type="revolute">
+    <parent link="BL_thigh_link"/>
+    <child link="BL_calf_link"/>
+    <origin xyz="0 0 -0.1"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="100" lower="-2.61" upper="-0.52" velocity="10"/>
+  </joint>
+
+</robot>
